@@ -32,15 +32,15 @@
 
             <!-- todo - dynamiser cette liste -->
             <% products.forEach(product => { %>
-            <div class="product">
-                <a href="/product/1">
-                    <img src="img/macbook-pro.png" alt="<%= product.title %>" />
-                </a>
-                <a href="/product/1">
-                    <div class="product-name"><%= product.title %></div>
-                </a>
-                <div class="product-price"><%= product.price %></div>
-            </div>
+                <div class="product">
+                    <a href="/product/1">
+                        <img src="<%= product.image %>" alt="<%= product.title %>" />
+                    </a>
+                    <a href="/product/1">
+                        <div class="product-name"><%= product.title %></div>
+                    </a>
+                    <div class="product-price"><%= product.price %> €</div>
+                </div>
 
             <% }) %>
 

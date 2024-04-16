@@ -6,19 +6,21 @@
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
         <span>Shop</span>
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
-        <span>Titre du produit</span>
+        <span><%= product.title %></span>
     </div>
 </div>
 
+
+
 <div class="product-section container">
     <div class="product-section-image">
-        <img src="/img/kenshiro.jpg" alt="" />
+        <img src="<%= product.image %>" alt="" />
     </div>
     <div class="product-section-information">
-        <h1 class="product-section-title">Titre du produit</h1>
-        <div class="product-section-price">1200€</div>
+        <h1 class="product-section-title"><%= product.title %></h1>
+        <div class="product-section-price"><%= product.price %> €</div>
 
-        <p>Lorem ipsum</p>
+        <p><%= product.description %></p>
 
         <form action="/cart/1" method="POST">
             <input class="button" value="Ajouter au panier" type="submit">
