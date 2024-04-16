@@ -1,0 +1,61 @@
+<%- include ('partials/nav') %>
+
+<div class="breadcrumbs">
+    <div class="container">
+        <a href="/shop">Home</a>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <span>Shop</span>
+    </div>
+</div>
+
+<div class="products-section container">
+    <div class="sidebar">
+        <h3 class="mt-3"><!-- todo - Insérer ici le nom de la catégorie --></h3>
+    </div>
+
+    <div>
+        <div class="products text-center">
+
+            <!-- todo - Dynamiser cette liste -->
+
+            <div class="product">
+                <a href="/product/1">
+                    <img src="/img/macbook-pro.png" alt="Nom du produit" />
+                </a>
+                <a href="/product/1">
+                    <div class="product-name">Nom du Produit</div>
+                </a>
+                <div class="product-price">€2500</div>
+            </div>
+
+            <div class="product">
+                <a href="/product/2">
+                    <img
+                        src="/img/macbook-pro-laravel.png"
+                        alt="Nom du produit"
+                    />
+                </a>
+                <a href="/product/2">
+                    <div class="product-name">Nom du Produit</div>
+                </a>
+                <div class="product-price">€3750</div>
+            </div>
+
+            <div class="product">
+                <a href="/product/3">
+                    <img
+                        src="/img/macbook-pro-laravel.png"
+                        alt="Nom du produit"
+                    />
+                </a>
+                <a href="/product/3">
+                    <div class="product-name">Nom du Produit</div>
+                </a>
+                <div class="product-price">€12540</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include ('partials/foot') %>
