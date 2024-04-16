@@ -30,6 +30,15 @@ app.set('views', './app/views');
 // Statically served files
 app.use(express.static(path.join(__dirname, './assets')));
 
+app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  }));
+
 // Nos Routes
 app.use(router);
 
