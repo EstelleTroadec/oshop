@@ -31,42 +31,18 @@
         <div class="products text-center">
 
             <!-- todo - dynamiser cette liste -->
-
+            <% products.forEach(product => { %>
             <div class="product">
                 <a href="/product/1">
-                    <img src="img/macbook-pro.png" alt="Nom du produit" />
+                    <img src="img/macbook-pro.png" alt="<%= product.title %>" />
                 </a>
                 <a href="/product/1">
-                    <div class="product-name">Nom du Produit</div>
+                    <div class="product-name"><%= product.title %></div>
                 </a>
-                <div class="product-price">2500€</div>
+                <div class="product-price"><%= product.price %></div>
             </div>
 
-            <div class="product">
-                <a href="/product/2">
-                    <img
-                        src="img/macbook-pro-laravel.png"
-                        alt="Nom du produit"
-                    />
-                </a>
-                <a href="/product/2">
-                    <div class="product-name">Nom du Produit</div>
-                </a>
-                <div class="product-price">3750€</div>
-            </div>
-
-            <div class="product">
-                <a href="/product/3">
-                    <img
-                        src="img/macbook-pro-laravel.png"
-                        alt="Nom du produit"
-                    />
-                </a>
-                <a href="/product/3">
-                    <div class="product-name">Nom du Produit</div>
-                </a>
-                <div class="product-price">12540€</div>
-            </div>
+            <% }) %>
 
         </div>
     </div>

@@ -39,11 +39,11 @@ Voici les routes :
 -   En bonus :smile: `/logout` (GET) Vous devrez faire le logout.
 -   En bonus :smile: `/register` (GET / POST) , si vous avez le temps, finir la création de compte.
 
-## Installation de l'application
+## Installation de l'application [X]
 
-1.  Installer les dépendances de l'application : `npm install`
+1.  Installer les dépendances de l'application : `npm install` 
 
-### BDD
+### BDD [X]
 
 1.  Créer une base de données et un utilisateur ayant le droit de s'y connecter (les bons souvenirs des saisons précédentes !).
 
@@ -56,7 +56,7 @@ Voici les routes :
 
 2.  Copier le contenu du fichier `.env.example` dans un fichier `.env` que vous devrez créer, modifier la variables `PG_URL` avec les informations nécessaires pour pouvoir vous connecter à votre BDD.
 
-### L'application
+### L'application [X]
 
 1. Démarrez l'application `npm run dev`
 2. Aller sur [localhost:3000](http://localhost:3000)
@@ -73,9 +73,9 @@ Il y a aussi trois produits, deux catégories et deux rôles dans la BDD.
 
 #### Vos tâches :construction_worker:
 
-1. Dans le répertoire `app/models`, vous devrez compléter les modèles Sequelize `Product` et `Category` dans les fichiers correspondants, et créer les associations relatives à ces 2 entités dans le fichier `app/models/index.js`. Des commentaires dans les fichiers fournis vous aideront.
+1. Dans le répertoire `app/models`, vous devrez compléter les modèles Sequelize `Product` [X] et `Category` [X] dans les fichiers correspondants, et créer les associations relatives à ces 2 entités dans le fichier `app/models/index.js` [X]. Des commentaires dans les fichiers fournis vous aideront.
 
-2. Vous devrez rendre la page `/shop` dynamique en affichant les catégories dans la sidebar et les informations des produits sur cette page. Des commentaires sont inclus dans les fichiers pour vous aider. Faites de même pour les pages de détail des catégories et des produits.
+2. Vous devrez rendre la page `/shop` dynamique en affichant les catégories dans la sidebar et les informations des produits sur cette page. Des commentaires sont inclus dans les fichiers pour vous aider. Faites de même pour les pages de détail des catégories et des produits. [X]
 
 3. Vous devrez faire fonctionner la connexion via les routes existantes sur `/login`.
 
