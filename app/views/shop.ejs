@@ -15,15 +15,11 @@
 
         <ul>
             <!-- todo - Dynamiser cette liste -->
-            <li>
-                <a href="/category/1"> Catégorie 1 </a>
-            </li>
-            <li>
-                <a href="/category/2"> Catégorie 2 </a>
-            </li>
-            <li>
-                <a href="/category/3">Catégorie 3</a>
-            </li>
+            <% categories.forEach(category => { %>
+                <li>
+                    <a href="/category/<%= category.id %>"> <%= category.name %></a>
+                </li>
+            <% }) %>
         </ul>
     </div>
 
@@ -33,10 +29,10 @@
             <!-- todo - dynamiser cette liste -->
             <% products.forEach(product => { %>
                 <div class="product">
-                    <a href="/product/1">
+                    <a href="/product/<%= product.id %>">
                         <img src="<%= product.image %>" alt="<%= product.title %>" />
                     </a>
-                    <a href="/product/1">
+                    <a href="/product/<%= product.id %>">
                         <div class="product-name"><%= product.title %></div>
                     </a>
                     <div class="product-price"><%= product.price %> €</div>
