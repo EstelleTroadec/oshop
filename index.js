@@ -18,9 +18,11 @@ app.use(
     session({
         saveUninitialized: true,
         resave: true,
-        secret: 'Un secret pour signer les id de sessions',
+        secret: process.env.SESSION_SECRET,
     })
 );
+
+
 app.use(loadUserToLocals);
 
 // Setup view engine
@@ -31,13 +33,6 @@ app.set('views', './app/views');
 app.use(express.static(path.join(__dirname, './assets')));
 
 app.use(express.urlencoded({ extended: true }));
-
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-    cookie: { secure: false },
-  }));
 
 // Nos Routes
 app.use(router);

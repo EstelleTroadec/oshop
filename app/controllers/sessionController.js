@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { User, Role } = require('../models');
+const { User } = require('../models');
 
 const sessionController = {
     index: (req, res) => {
@@ -12,38 +12,57 @@ const sessionController = {
             // !! Votre code à partir d'ici
 
             // On récupère user avec le role
-            //const role = await Role.findOne({})
 
             // Est-ce que l'utilisateur existe en BDD ?
             // Sélectionner user avec email et inclure le role, si on ne le trouve pas :
             //      on envoie un message d'erreur dans un objet:  {error: "Utilisateur ou mot de passe incorrect"} et on render `login` en lui passant l'erreur
             // Sinon on continue.
+
+            // on cherche le user dans la BDD via son email
             const user = await User.findOne({
                 where: {
-                  email: req.body.email,
-                },
-              });
-        
+                  email: email,
+                }
+            }, { // on inclue le role
+                  include: 'role',
+                });
+                
+              // si aucun user n'est trouvé, on envoie une erreur  
               if (!user) {
-                res.status(401).send('login', { error: "Utilisateur ou mot de passe incorrect"});
+                res.render('login', { error: "Utilisateur ou mot de passe incorrect"});
+              // et on en reste là en stoppant la fonction via return  
                 return;
               }
 
             // Le mot de passe est il correct ?
             // On compare le mots de passe du formulaire avec celui de l'utilisateur
             //      Si le mot de passe est incorrect : on envoie un message d'erreur dans un objet:  {error: "Utilisateur ou mot de passe incorrect"} et on render `login` en lui passant l'erreur
+            
+            
+            // on compare le MDP envoyé avec le hash en BDD
             const passwordIsValid = await bcrypt.compare(
-                req.body.password,
-                user.password,
+                password,
+                user.password
               );
-        
+            
+            // si le renseigné dans le formulaire ne correspond pas à celui dans la BDD, on envoie une erreur
               if (!passwordIsValid) {
-                res.status(401).send('login', { error: "Utilisateur ou mot de passe incorrect"});
+                res.render('login', { error: "Utilisateur ou mot de passe incorrect"});
+              // et on s'arrête là  
                 return;
-              }  
+              }; 
+
+            // ici on a choisi de ne pas mettre le mot de passe hashé dans la session et on simplifie l'objet pour garder uniquement quelques infos utiles
+            const formattedUser = {
+              id: user.id,
+              name: user.name,
+              role: {
+                name: user.role.name,
+              },
+            } ; 
 
             // On ajoute user a la session
-            req.session.userId = user.id;
+            req.session.user = formattedUser;
 
             // On enlève le mot de passe de la session.
 
