@@ -19,19 +19,19 @@
             <!-- todo - Dynamiser cette liste -->
 
             <% category.products.forEach(product => { %>    
-                <% if (product.length < 1) { %>
-                    <p class="ms-2">Nous sommes désolés, nous n'avons actuellement aucun produit dans cette catégorie.</p>
+                <% if (product) { %>
+                    <div class="product">
+                        <a href="/product/<%= product.id %>">
+                            <img src="<%= product.image %>" alt="<%= product.title %>" />
+                        </a>
+                        <a href="/product/<%= product.id %>">
+                            <div class="product-name"><%= product.title %></div>
+                        </a>
+                        <div class="product-price"><%= product.price %> €</div>
+                        
+                    </div>
                 <% } else {%>
-                        <div class="product">
-                            <a href="/product/1">
-                                <img src="<%= product.image %>" alt="<%= product.title %>" />
-                            </a>
-                            <a href="/product/1">
-                                <div class="product-name"><%= product.title %></div>
-                            </a>
-                            <div class="product-price"><%= product.price %> €</div>
-                        </div>
-                    
+                    <p class="ms-2">Nous sommes désolés, nous n'avons actuellement aucun produit dans cette catégorie.</p>
                 <% } %>
             <% }) %>
 
