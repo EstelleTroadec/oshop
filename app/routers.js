@@ -10,10 +10,10 @@ const auth = require('../middlewares/auth');
 const isAdmin = require('../middlewares/isAdmin');
 
 // Page d'accueil
-router.get('/', catalogController.index);
+router.get('/', catalogController.indexPage);
 
 // !! page /shop, vous travaillez dans ce controller
-router.get('/shop', catalogController.productsList);
+router.get('/shop', catalogController.shopPage);
 
 // Affichage d'une catégorie et des produits associés 
 router.get('/category/:id', catalogController.category);
