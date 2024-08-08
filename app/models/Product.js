@@ -1,18 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../database');
-const Category = require('./Category.js');
 
 class Product extends Sequelize.Model {}
-/**
- * Voici les champs nécessaires pour faire le Model
- * category_id int
- * ref string
- * image string
- * title string
- * description text
- * price number
- * tableName: 'products',
- */
 
 Product.init(
     {
@@ -26,7 +15,7 @@ Product.init(
             allowNull: false,
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         image: {
