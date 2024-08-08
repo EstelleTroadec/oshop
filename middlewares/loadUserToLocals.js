@@ -1,4 +1,4 @@
-// On se sert des locals pour pouvoir utiliser la variable user dans les views.
+// use the locals in order to use the user variable in the vews
 const loadUserToLocals = (req, res, next) => {
   if (req.session.user) {
     res.locals.user = req.session.user;
