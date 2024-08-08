@@ -1,6 +1,6 @@
 const { Category, Product } = require('../models');
 
-// pour vérifier et utiliser plus facilement les infos de la BDD :
+// to check more easily the database information :
 const pretty = (obj) => JSON.stringify(obj, null, 2);
 const cpretty = (obj) => console.log(pretty(obj));
 
@@ -12,19 +12,10 @@ const catalogController = {
 
     productsList: async (req, res) => {
         try {
-            // todo, ici il faudra les vrais produits et catégories de la db
-            const products = await Product.findAll({
-                include: [{
-                    association: 'category',
-                }]
-            });
-            const categories = await Category.findAll({
-                include: [{
-                    association: 'products',
-                }]
-            });
+            const products = await Product.findAll();
+            const categories = await Category.findAll();
 
-            // pour vérif :
+            // just to check :
             // cpretty(products);
 
             res.render('shop', { 
@@ -39,7 +30,6 @@ const catalogController = {
     },
 
     category: async (req, res) => {
-        // todo, il faut récupérer la catégorie en fonction de l'id présent dans l'url et la passer à la vue
         try {
             const category = await Category.findByPk(req.params.id, {
                 include: [{
