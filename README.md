@@ -17,130 +17,84 @@ Site fictif de E-commerce d'un client, développé à titre d'exercice dans le c
   - Les sessions avec `express-session`
   - Consolider les trucs `<%= bizarres %>` avec ejs
 
+## Technologies utilisées
+
+- Node.js
+- Express
+- EJS
+- PostgreSQL
+
+### Outils
+
+- Visual Studio Code
+- Git / Github
+- Terminal
+
 ## Installation de l'application
+  
+### Pré-requis
 
-1. Installer les dépendances de l'application : `npm install`
+- Node.JS
+- npm
+- postgreSQL
 
-### BDD
+### Marche à suivre
 
-1. Créer une base de données et un utilisateur ayant le droit de s'y connecter (les bons souvenirs des saisons précédentes !).
+#### Cloner le dépôt
 
-<details>
-    <summary>
-        Je ne me rappelle plus trop des commandes...
-    </summary>
-    Un petit tour sur la fiche recap ? https://kourou.oclock.io/ressources/objectifs/creer-une-nouvelle-base-de-donnee-sur-postgresql/
-</details>
+Clonez ce dépôt sur votre machine :
 
-2. Exécuter le script SQL fourni dans `data/structure-data.sql` afin de créer les tables dans notre BDD et y ajouter un échantillon de données.
-
-3. Copier le contenu du fichier `.env.example` dans un fichier `.env` que vous devrez créer, modifier la variables `PG_URL` avec les informations nécessaires pour pouvoir vous connecter à votre BDD.
-
-### L'application [X]
-
-1. Démarrez l'application `npm run dev`
-2. Aller sur [localhost:3000](http://localhost:3000)
-3. Appréciez le travail de notre designer / intégrateur.
-
-### Précisions :straight_ruler:
-
-Il y a deux utilisateurs en DB :
-
-1. _John Example_, email : `example@example.com`, mot de passe : `password`, rôle : _customer_
-2. _Maurice Admin_, email: `admin@admin.com`, mot de passe: `password`, rôle : _admin_
-
-Il y a aussi trois produits, deux catégories et deux rôles dans la BDD.
-
-#### Vos tâches :construction_worker:
-
-1. Dans le répertoire `app/models`, vous devrez compléter les modèles Sequelize `Product` [X] et `Category` [X] dans les fichiers correspondants, et créer les associations relatives à ces 2 entités dans le fichier `app/models/index.js` [X]. Des commentaires dans les fichiers fournis vous aideront.
-
-2. Vous devrez rendre la page `/shop` dynamique en affichant les catégories dans la sidebar et les informations des produits sur cette page. Des commentaires sont inclus dans les fichiers pour vous aider. Faites de même pour les pages de détail des catégories et des produits. [X]
-
-3. Vous devrez faire fonctionner la connexion via les routes existantes sur `/login`.
-
-4. Bonus : faire fonctionner le bouton `logout` de `NavLinks.ejs` et du `header.ejs` du dashboard via la route existante sur `/logout`
-
-5. Bonus : finir la méthode `register` de `userController`. :fireworks:
-
----
-
-<details>
-<summary>Enfin, voici l'architecture de notre application</summary>
-
-
-```bash
-.
-├── README.md
-├── app
-│   ├── controllers
-│   │   ├── adminController.js
-│   │   ├── cartController.js
-│   │   ├── catalogController.js
-│   │   ├── sessionController.js
-│   │   └── userController.js
-│   ├── database.js
-│   ├── models
-│   │   ├── Category.js
-│   │   ├── Product.js
-│   │   ├── Role.js
-│   │   ├── User.js
-│   │   └── index.js
-│   ├── routers.js
-│   └── views
-│       ├── 401.ejs
-│       ├── admin.ejs
-│       ├── cart.ejs
-│       ├── category.ejs
-│       ├── dashboard
-│       │   ├── dashboard.ejs
-│       │   └── partials
-│       │       ├── head.ejs
-│       │       ├── header.ejs
-│       │       ├── quickActions.ejs
-│       │       └── sidebar.ejs
-│       ├── error.ejs
-│       ├── index.ejs
-│       ├── login.ejs
-│       ├── partials
-│       │   ├── foot.ejs
-│       │   ├── head.ejs
-│       │   ├── header.ejs
-│       │   ├── nav.ejs
-│       │   └── navlinks.ejs
-│       ├── product.ejs
-│       ├── register.ejs
-│       └── shop.ejs
-├── assets
-│   ├── css
-│   │   ├── app.css
-│   │   └── dashboard.css
-│   ├── favicon.ico
-│   └── img
-│       ├── 404.gif
-│       ├── blog1.png
-│       ├── blog2.png
-│       ├── blog3.png
-│       ├── kenshiro.jpg
-│       ├── macbook-pro-laravel.png
-│       ├── macbook-pro.png
-│       └── triangles.svg
-├── data
-│   └── structure-data.sql
-├── index.js
-├── middlewares
-│   ├── auth.js
-│   ├── cartCalculations.js
-│   ├── errorHandlers.js
-│   ├── initCart.js
-│   ├── isAdmin.js
-│   └── loadUserToLocals.js
-├── package-lock.json
-├── package.json
-└── utils
-    └── helpers.js
+```shell
+git clone git@github.com:EstelleTroadec/oshop.git
 ```
 
+Puis entrez dans le dépôt local et ouvrez-le avec votre éditeur de code :
 
-</details>
+```shell
+cd nomDuDepot && code .
+```
 
+#### Créez la base de données
+
+1. Depuis un terminal, connectez-vous à Postgres et créez votre base de données PostgreSQL. Commandes depuis un terminal :
+
+```shell
+# Commandes pour se connecter à Postgres
+`sudo -i -u postgres psql` (ou `psql postgres` sur MacOsX)`
+
+# pour créer votre bdd
+`CREATE USER your_username WITH PASSWORD 'your_password';`
+`CREATE DATABASE your_database OWNER your_username;`
+```
+
+2. Déconnectez-vous de votre base données (commande : `ctrl d` ou `\q`)
+
+3. Toujours depuis le terminal, chargez les données du projet dans la base de données que vous venez de créer :
+
+```shell
+psql -U your_username -d your_database -f data/structure_data.sql
+```
+
+4. Configurez les paramètres de connexion à la base de données dans votre fichier .env, en reprenant l'exemple ci-dessous :
+
+```shell
+PG_URL=postgres://your_username:your_password@localhost/your_database
+PORT=3000
+SESSION_SECRET=secretQuiEstAssezLongPourEtreSecurisé
+````
+
+#### Installez les dépendances du projet
+
+``` shell
+npm install
+```
+
+#### Démarrez le serveur
+
+```shell
+npm run dev
+````
+
+#### Ouvrez le projet dans un navigateur
+
+Une fois le serveur démarré, rendez-vous dans votre navigateur préféré à l'adresse http://localhost:5000 (ou au port que vous avez configuré dans votre fichier .env) pour voir le rendu visuel et interragir avec le site.
