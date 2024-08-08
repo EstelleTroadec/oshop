@@ -15,7 +15,7 @@ Site fictif de E-commerce d'un client, développé à titre d'exercice dans le c
     - Associations entre différentes tables
     - Requêtes
   - Les sessions avec `express-session`
-  - Consolider les trucs `<%= bizarres %>` avec ejs
+  - Consolider ejs
 
 ## Technologies utilisées
 
@@ -23,12 +23,7 @@ Site fictif de E-commerce d'un client, développé à titre d'exercice dans le c
 - Express
 - EJS
 - PostgreSQL
-
-### Outils
-
-- Visual Studio Code
-- Git / Github
-- Terminal
+- Sequelize
 
 ## Installation de l'application
   
@@ -97,4 +92,4 @@ npm run dev
 
 #### Ouvrez le projet dans un navigateur
 
-Une fois le serveur démarré, rendez-vous dans votre navigateur préféré à l'adresse http://localhost:5000 (ou au port que vous avez configuré dans votre fichier .env) pour voir le rendu visuel et interragir avec le site.
+Une fois le serveur démarré, rendez-vous dans votre navigateur préféré à l'adresse http://localhost:3000 (ou au port que vous avez configuré dans votre fichier .env) pour voir le rendu visuel et interragir avec le site.
