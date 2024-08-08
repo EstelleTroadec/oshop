@@ -6,8 +6,8 @@ Site fictif de E-commerce d'un client, développé à titre d'exercice dans le c
 
 ### Objectifs de l'exercice
 
-- Travailler dans du code existant, respecter des consignes et trouver sa place comme en entreprise.
-- S'y retrouver dans un code source avec une architecture que vous n'avez pas choisi, et s'adapter à un nouvel environnement.
+- Travailler dans du code existant et respecter des consignes (comme en entreprise).
+- S'y retrouver dans un code source avec une architecture que non choisie, et s'adapter à un nouvel environnement.
 - Valider les acquis :
   - Création de base de données (à l'aide d'un script existant)
   - `Sequelize`
@@ -15,7 +15,7 @@ Site fictif de E-commerce d'un client, développé à titre d'exercice dans le c
     - Associations entre différentes tables
     - Requêtes
   - Les sessions avec `express-session`
-  - Consolider ejs
+  - Consolider l'ejs
 
 ## Technologies utilisées
 
@@ -92,4 +92,4 @@ npm run dev
 
 #### Ouvrez le projet dans un navigateur
 
-Une fois le serveur démarré, rendez-vous dans votre navigateur préféré à l'adresse http://localhost:3000 (ou au port que vous avez configuré dans votre fichier .env) pour voir le rendu visuel et interragir avec le site.
+Une fois le serveur démarré, rendez-vous dans votre navigateur préféré à l'adresse http://localhost:3000 (à adapter selon le port que vous aurez configuré dans votre fichier .env) pour voir le rendu visuel et interragir avec le site.
