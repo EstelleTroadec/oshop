@@ -726,7 +726,7 @@ footer {
 }
 
 .cart-section .cart-table-row .cart-item-details {
-    padding-top: 5px;
+    padding-left: 20px;
 }
 
 .cart-section .cart-table-row .cart-table-description {
@@ -805,7 +805,7 @@ footer {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: 25%;
+    width: 40%;
     text-align: right;
 }
 
