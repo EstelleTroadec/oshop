@@ -447,7 +447,7 @@ header.with-background .top-nav ul {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: 40%;
+    width: 60%;
 }
 
 header.with-background .top-nav ul a {
@@ -512,7 +512,7 @@ header .top-nav ul {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: 40%;
+    width: 60%;
     padding-top: 8px;
     font-weight: 400;
 }
