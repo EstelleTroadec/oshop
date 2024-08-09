@@ -2,9 +2,9 @@
 
 <div class="breadcrumbs">
     <div class="container">
-        <a href="/shop">Home</a>
+        <a href="/">Home</a>
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
-        <span>Shop</span>
+        <span><a href="/shop">Shop</a></span>
     </div>
 </div>
 
@@ -14,7 +14,6 @@
         <h3 class="mt-3">Les catégories</h3>
 
         <ul>
-            <!-- todo - Dynamiser cette liste -->
             <% categories.forEach(category => { %>
                 <li>
                     <a href="/category/<%= category.id %>"> <%= category.name %></a>

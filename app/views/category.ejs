@@ -2,21 +2,21 @@
 
 <div class="breadcrumbs">
     <div class="container">
-        <a href="/shop">Home</a>
+        <a href="/">Home</a>
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
-        <span>Shop</span>
+        <span><a href="/shop">Shop</a></span>
     </div>
 </div>
 
 <div class="products-section container">
     <div class="sidebar">
-        <h3 class="mt-3"><!-- todo - Insérer ici le nom de la catégorie --></h3>
+        <div class="sidebar">
+            <h3 class="mt-3">Produits de la catégorie <%= category.name %> :</h3>
+        </div>
     </div>
 
     <div>
         <div class="products text-center">
-
-            <!-- todo - Dynamiser cette liste -->
 
             <% category.products.forEach(product => { %>    
                 <% if (product) { %>
