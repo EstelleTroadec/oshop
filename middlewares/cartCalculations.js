@@ -1,13 +1,12 @@
 const formatPrice = require('../utils/helpers');
 
 const cartCalculations = (req, res, next) => {
-    //
     req.app.locals.cartCount = 0;
     //calcul des totaux
     if (req.session.cart.products.length > 0) {
         // Des bons cas d'utilisation de reduce
         const totalHT = req.session.cart.products.reduce(
-            (acc, prod) => (acc += prod.priceHT * prod.qty),
+            (acc, prod) => (acc += prod.price * prod.qty),
             0
         );
 
@@ -18,7 +17,8 @@ const cartCalculations = (req, res, next) => {
 
         req.app.locals['totalHT'] = totalHT;
 
-        const totalTTC = formatPrice(totalHT);
+
+        const totalTTC = formatPrice(totalHT) * 100;
 
         req.app.locals['totalTTC'] = totalTTC;
     }

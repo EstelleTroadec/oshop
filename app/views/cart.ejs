@@ -37,7 +37,7 @@
                           </a>
                         </div>
                         <div class="cart-table-description">
-                          15 inch, 1TB SSD, 32GB RAM
+                          <%= product.description %>
                         </div>
                       </div>
                     </div>
@@ -65,7 +65,7 @@
                         </select>
                       </div>
                       <div>
-                        <%= product.priceHT * product.qty / 100%> &euro; HT
+                        <%= product.price  * product.qty %> &euro; HT
                       </div>
                     </div>
                   </div>
@@ -99,11 +99,11 @@
                   <span class="cart-totals-total">Total TTC</span>
                 </div>
                 <div class="cart-totals-subtotal">
-                <%= totalHT / 100 %>  &euro;
+                <%= totalHT.toFixed(2) %>  &euro;
                   <br />
-                  <%= (totalTTC - totalHT / 100 ).toFixed(2) %> &euro;
+                  <%= (totalTTC - totalHT).toFixed(2) %> &euro;
                   <br />
-                  <span class="cart-totals-total"><%= totalTTC%> &euro;</span>
+                  <span class="cart-totals-total"><%= totalTTC.toFixed(2)%> &euro;</span>
                 </div>
               </div>
             </div>
