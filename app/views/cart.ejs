@@ -4,7 +4,7 @@
         <div class="container">
           <a href="/shop">Home</a>
           <i class="fa fa-chevron-right breadcrumb-separator" ></i>
-          <span>Shopping Cart</span>
+          <span>Mon panier</span>
         </div>
       </div>
 
@@ -12,7 +12,7 @@
         <div>
           <h2>
             <% if(locals.cart?.products.length  > 0) { %>
-                 <%= cartCount %> items in Shopping Cart
+                 Vous avez <%= cartCount %> produits dans votre panier
                  <a href="/cart/destroy" class="button">Vider le panier</a>
             <% } else { %>
                     Vous n'avez rien ajouté au panier
@@ -74,13 +74,13 @@
 
           </div>
           <a href="/" class="have-code">
-            Have a Code?
+            Vous avez un code promo ?
           </a>
           <div class="have-code-container">
             <form action="/">
               <input type="text" />
               <button type="submit" class="button button-plain">
-                Apply
+                Appliquer
               </button>
             </form>
           </div>
@@ -89,14 +89,14 @@
 
             <div class="cart-totals">
               <div class="cart-totals-left">
-                placeholder pour une fontionnalité
+                Total de votre panier :
               </div>
 
               <div class="cart-totals-right">
                 <div>
-                  Subtotal <br />
-                  Tax <br />
-                  <span class="cart-totals-total">Total</span>
+                  Total HT <br />
+                  TVA <br />
+                  <span class="cart-totals-total">Total TTC</span>
                 </div>
                 <div class="cart-totals-subtotal">
                 <%= totalHT / 100 %>  &euro;
@@ -111,11 +111,11 @@
 
           <div class="cart-buttons">
             <a href="/shop" class="button">
-              Continue Shopping
+              Continuer mes achats
             </a>
             <% if (locals.count) { %>
                 <a href="/checkout" class="button-primary">
-                  Proceed to Checkout
+                  Passer au paiement
                 </a>
             <% } %>
 
