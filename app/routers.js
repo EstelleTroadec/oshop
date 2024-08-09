@@ -42,8 +42,11 @@ router.post('/register', userController.register);
 
 // Cart with middlewares
 router.get('/cart', initCart, cartCalculations, cartController.index);
+// Add to cart
 router.post('/cart/', initCart, cartController.addOrUpdate);
 router.post('/cart/add/:id', initCart, cartController.addOrUpdate);
+// Remove from cart
+router.post('/cart/remove/:id', initCart, cartController.remove);
 
 // user profile with middleware
 router.get('/profile', auth, userController.show);

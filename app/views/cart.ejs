@@ -43,11 +43,9 @@
                     </div>
                     <div class="cart-table-row-right">
                       <div class="cart-table-actions">
-                        <a
-                          href="/cart/remove/<%= product.id %> "
-                        >
-                          Remove
-                        </a>
+                        <form class="remove-button" action="/cart/remove/<%= product.id %>" method="POST">
+                          <input value="Supprimer du panier" type="submit">
+                      </form>
                       </div>
                       <div>
                         <select

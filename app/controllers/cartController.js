@@ -32,7 +32,7 @@ const cartController = {
     },
 
     remove: (req, res) => {
-        const productId = parseInt(req.params.productId);
+        const productId = parseInt(req.params.id);
 
         const productsInCart = req.session.cart.products;
         const newProducts = productsInCart.filter(
