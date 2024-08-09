@@ -43,7 +43,7 @@ router.post('/register', userController.register);
 // Cart with middlewares
 router.get('/cart', initCart, cartCalculations, cartController.index);
 router.post('/cart/', initCart, cartController.addOrUpdate);
-router.post('/cart/:id', initCart, cartController.addOrUpdate);
+router.post('/cart/add/:id', initCart, cartController.addOrUpdate);
 
 // user profile with middleware
 router.get('/profile', auth, userController.show);
