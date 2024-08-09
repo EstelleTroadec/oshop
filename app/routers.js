@@ -47,6 +47,8 @@ router.post('/cart/', initCart, cartController.addOrUpdate);
 router.post('/cart/add/:id', initCart, cartController.addOrUpdate);
 // Remove from cart
 router.post('/cart/remove/:id', initCart, cartController.remove);
+// Destroy cart
+router.get('/cart/destroy', initCart, cartController.destroy);
 
 // user profile with middleware
 router.get('/profile', auth, userController.show);
