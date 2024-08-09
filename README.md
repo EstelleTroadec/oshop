@@ -14,8 +14,19 @@ Site fictif de E-commerce d'un client, développé à titre d'exercice dans le c
     - Création de modèles (pour nos tables)
     - Associations entre différentes tables
     - Requêtes
-  - Les sessions avec `express-session`
+  - Travailler les sessions avec `express-session`
   - Consolider l'ejs
+
+### Fonctionnalités mises en place
+
+Il est possible de :
+
+- rechercher les produits par catégorie dans le shop,
+- s'inscrire,
+- se connecter,
+- accéder à son espace personnel,
+- ajouter ou supprimer un produit dans le panier,
+- supprimer l'intégralité du panier.
 
 ## Technologies utilisées
 
