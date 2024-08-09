@@ -6,27 +6,7 @@ const cpretty = (obj) => console.log(pretty(obj));
 
 
 const catalogController = {
-/*     index: async (req, res) => {
-        res.render('index');
-    }, */
-
     getProductsList: async (req, res) => {
-        /* try {
-            const products = await Product.findAll();
-            const categories = await Category.findAll();
-
-            // just to check :
-            // cpretty(products);
-
-            res.render('shop', { 
-                categories,
-                products 
-            });
-
-        } catch (error) {
-            console.log(error);
-            res.status(500).send('Server Error');
-        } */
             const products = await Product.findAll();
             const categories = await Category.findAll();
             return { products, categories };
@@ -80,7 +60,6 @@ const catalogController = {
     },
 
     product: async (req, res) => {
-        // todo, récupérer le produit demandé en base de données.
         try {
               const product = await Product.findByPk(req.params.id, {
                 include: [{

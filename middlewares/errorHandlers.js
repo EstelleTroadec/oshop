@@ -1,12 +1,12 @@
 exports.notFound = function (req, res, next) {
-    // Erreur 404
+    // 404 error
     const err = new Error('Not Found');
     err.status = 404;
     next(err);
 };
 
-// Un middleware d'erreur attend 4 arguments (au lieu de 3), le premier étant l'erreur.
-// Lors d'un appel à `next()`, si on passe une Erreur en argument (`next(error)`), alors le prochain middleware qui sera traversé sera le middleware d'erreur.
+// an error handler middleware needs 4 arguments (instead of 3). first argument must be the error
+// when we call "next()" in a middleware, it will pass the error to the next middleware
 exports.developmentErrors = (err, req, res, next) => {
     err.stack = err.stack || '';
     const errorDetails = {

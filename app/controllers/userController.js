@@ -9,31 +9,31 @@ const userController = {
 
     register: async (req, res) => {
         try {
-            // !! votre code à partir d'ici
-            // on récupère les données de la requête
+            // get the data from the form
             const { firstname, lastname, email, password, passwordConfirm} = req.body;
 
-            // verifier l'email avec le package npm email-validator
+            // check the email with npm email-validator
+            // doc if needed : https://www.npmjs.com/package/email-validator
             if (!emailValidator.validate(email)) {
-                //on renvoie une vue d'erreur
+                // if email not validated, we send an error message
                 res.render('register', {
                     error: "Email invalide",
                 });
-                // on arrête là en cas d'erreur
+                // and we stop the function with a return
                 return;
             }
 
-            // verifier si password correspond à password confirm
+            // if password and password confirm do not match
             if (password !== passwordConfirm)  {
-                //on renvoie une vue d'erreur si ça ne correspond pas
+                // we send an error message
                 res.render('register', {
                     error: "Les mots de passe ne correspondent pas"
                 });
-                // on arrête là en cas d'erreur
+                // and we stop the function with a return
                 return;
             }
 
-            // vérifier si le user n'existe pas déjà
+            // check if user already exists
             const checkUser = await User.findOne({
                 where: { 
                     email: email, 
@@ -44,7 +44,6 @@ const userController = {
                 res.render('register', {
                     error: "Cet email est déjà utilisé"
                 });
-                //on arrête là en cas d'erreur
                 return;
             }
 
@@ -52,20 +51,17 @@ const userController = {
             const hashedPassword = await bcrypt.hash(password, 10);
 
 
-            // sauvegarder user
+            // save user
             const user = await User.create({
                 name: firstname + ' ' + lastname,
                 email: email,
                 password: hashedPassword,
             });
 
-            // attribuer un rôle ici, le role customer.
+            // give user a role : by default, it will be "customer"
             const customerRole = await Role.findByPk(1);
             user.setRole(customerRole);
 
-
-
-            // !! ne pas modifier cette ligne
             res.render('login', {
                 message: 'Vous pouvez maintenant vous connecter !',
             });

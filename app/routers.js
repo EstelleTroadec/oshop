@@ -5,38 +5,49 @@ const catalogController = require('./controllers/catalogController');
 const sessionController = require('./controllers/sessionController');
 const userController = require('./controllers/userController');
 const adminController = require('./controllers/adminController');
+const cartController = require('./controllers/cartController');
 
+// auth middlewares
 const auth = require('../middlewares/auth');
 const isAdmin = require('../middlewares/isAdmin');
 
-// Page d'accueil
+// cart middlewares
+const initCart = require('../middlewares/initCart');
+const cartCalculations = require('../middlewares/cartCalculations');
+
+// Home page
 router.get('/', catalogController.indexPage);
 
-// !! page /shop, vous travaillez dans ce controller
+// Shop page
 router.get('/shop', catalogController.shopPage);
 
 // Affichage d'une catégorie et des produits associés 
 router.get('/category/:id', catalogController.category);
 
-// Page de détail d'un produit
+// Product page
 router.get('/product/:id', catalogController.product);
 
-// Affichage page formulaire de login
+// Login form page
 router.get('/login', sessionController.index);
-//!! Démarre une session user si user existe, vous travaillez dans ce controller
+
+// Session
 router.post('/login', sessionController.login);
 
-// !! Bonus : Logout, vous travaillez dans ce controller
+// Logout page
 router.get('/logout', sessionController.logout);
 
-// Affichage page formulaire register
+// Sign up page
 router.get('/register', userController.index);
-// !! Bonus : Create user, si vous avez le temps, essayez de faire fonctionner ce formulaire.
 router.post('/register', userController.register);
 
-// user profile avec middleware
+// Cart with middlewares
+router.get('/cart', initCart, cartCalculations, cartController.index);
+router.post('/cart/', initCart, cartController.addOrUpdate);
+router.post('/cart/:id', initCart, cartController.addOrUpdate);
+
+// user profile with middleware
 router.get('/profile', auth, userController.show);
-// admin avec chained middlewares
+// admin with chained middlewares
 router.get('/dashboard', [auth, isAdmin], adminController.index);
 
 module.exports = router;

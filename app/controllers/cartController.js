@@ -6,24 +6,24 @@ const cartController = {
     },
 
     addOrUpdate: async (req, res) => {
-        const productId = parseInt(req.params.productId);
+        const productId = parseInt(req.params.id);
 
         const productsInCart = req.session.cart.products;
         const productToAdd = await Product.findOne({
             where: { id: productId },
         });
-
-        // Si on a déjà le produit dans le panier , on met à jour la quantité, sinon on ajoute le produit au panier
+        
         const found = productsInCart.find(
             prod => parseInt(prod.id) === productToAdd.id
         );
-
+        // if this product is already in the cart, update the number
         if (found) {
             found['qty'] += 1;
             req.session.cart.products = productsInCart.map(prod =>
                 prod.id === found.id ? found : prod
             );
         } else {
+            // otherwise, add it to the cart
             productToAdd.dataValues['qty'] = 1;
             req.session.cart.products.push(productToAdd);
         }
