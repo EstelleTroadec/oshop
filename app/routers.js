@@ -21,22 +21,20 @@ router.get('/', catalogController.indexPage);
 // Shop page
 router.get('/shop', catalogController.shopPage);
 
-// Affichage d'une catégorie et des produits associés 
+
 router.get('/category/:id', catalogController.category);
 
-// Product page
+
 router.get('/product/:id', catalogController.product);
 
-// Login form page
-router.get('/login', sessionController.index);
 
-// Session
+router.get('/login', sessionController.index);
 router.post('/login', sessionController.login);
 
-// Logout page
+
 router.get('/logout', sessionController.logout);
 
-// Sign up page
+
 router.get('/register', userController.index);
 router.post('/register', userController.register);
 
